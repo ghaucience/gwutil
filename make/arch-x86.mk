@@ -27,7 +27,7 @@ CFLAGS		:= /W3 /nologo /O2 /EHsc /D_CRT_SECURE_NO_WARNINGS /DJSON_IS_AMALGAMATIO
 CFLAGS		+= /I"$(VCInstallDir)\ATLMFC\INCLUDE"
 CFLAGS		+= /I"$(VCInstallDir)\INCLUDE"
 CFLAGS		+= /I"$(WindowsSdkDir)\include"
-CFLAGS		+= /I"./src" /I"." /I"./libs/libxl" /I"./libs/json" /I"./libs/3des-ecb/des.cpp" /I./libs/libssh2/
+CFLAGS		+= /I"./src" /I"." /I"./libs/libxl" /I"./libs/json" /I"./libs/3des-ecb" /I"./libs/libssh2"
 
 CPP			:= cl
 CPPFLAGS		:= $(CFLAGS)

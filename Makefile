@@ -18,6 +18,7 @@ srcs		+= $(ROOTDIR)/src/util.cpp
 srcs		+= $(ROOTDIR)/src/udp.cpp
 srcs		+= $(ROOTDIR)/src/vlist.cpp
 srcs		+= $(ROOTDIR)/src/ssh2.cpp
+srcs		+= $(ROOTDIR)/src/encc.cpp
 
 srcs		+= $(ROOTDIR)/libs/json/jsoncpp.cpp
 srcs		+= $(ROOTDIR)/libs/3des-ecb/des.cpp
