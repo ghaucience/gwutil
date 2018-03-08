@@ -94,6 +94,31 @@ void	test_in(void *arg, int fd) {
 
 	return;
 }
+/////////////////////////////////////////////////
+static int system_cmd(char *cmd, char *out) {
+	FILE *fp = popen(cmd, "r");
+	if (fp == NULL) {
+		out[0] = 0;
+		return -1;
+	}
+
+	char buf[256];
+	if (fgets(buf, sizeof(buf) - 1, fp) == NULL) {
+		pclose(fp);
+		return -2;
+	}
+	pclose(fp);
+
+	int len = strlen(buf);
+	if (buf[len-1] == 0x0A) {
+		buf[len-1] = 0;
+		len--;
+	} 
+
+	strcpy(out, buf);
+	return 0;
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////
 // cmd
@@ -128,6 +153,9 @@ void test_do_cmd(char *load, char *cliip, int cliport) {
 		}
 
 		json_decref(jres);
+
+		char xbuf[1024];
+		system_cmd("ls", xbuf);
 	} else if (strcmp(cmd, "QueryWifi") == 0) {
 		json_t *jres = json_object();
 		json_object_set_new(jres, "cmd",	json_string("QueryWifiResponse"));
