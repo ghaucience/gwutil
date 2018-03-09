@@ -1,7 +1,7 @@
 ROOTDIR	=$(shell pwd)
 WORKDIR	=$(ROOTDIR)/build
 
-VERSION	:= 1.0.1
+VERSION	:= 1.0.2
 targets	+= DusunGwManage_$(VERSION).exe
 
 .PHONY: targets

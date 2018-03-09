@@ -178,11 +178,11 @@ void vlist_getcommip(int subitem, char *ip, int len) {
   ListView_GetItemText(vlist_getwindow(), subitem, 6, ip, len);  
 }
 int vlist_getcommport(int subitem) {
-  char strport[128];
-  ListView_GetItemText(vlist_getwindow(), subitem, 7, strport, sizeof(strport));
-  int port = 8888;
-  if (sscanf(strport, "%d", &port) != 1) {
-    port = 8888;
-  }
-  return port;
+  // char strport[128];
+  //ListView_GetItemText(vlist_getwindow(), subitem, 7, strport, sizeof(strport));
+  //int port = 5566
+  //f (sscanf(strport, "%d", &port) != 1) {
+  //port = 5566
+  //}
+  return 5566;
 }
