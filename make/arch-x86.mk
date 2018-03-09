@@ -34,7 +34,8 @@ CPPFLAGS		:= $(CFLAGS)
 
 LD			:= link
 #LDFLAGS		:= /nologo /SUBSYSTEM:CONSOLE /MACHINE:X86 /ENTRY:mainCRTStartup
-LDFLAGS		:= /nologo  /MACHINE:X86 /ENTRY:mainCRTStartup
+#LDFLAGS		:= /nologo  /MACHINE:X86
+LDFLAGS		:= /nologo  /MACHINE:X86  /SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup
 LDFLAGS		+= /libpath:"$(VSInstallDir)"
 LDFLAGS		+= /libpath:"$(VSInstallDir)\lib"
 LDFLAGS		+= /libpath:"$(VCInstallDir)\LIB"
