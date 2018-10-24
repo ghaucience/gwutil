@@ -14,6 +14,8 @@ extern "C" {
   int vlist_hitted_item(int x, int y);
   void vlist_getcommip(int subitem, char *ip, int len);
   int vlist_getcommport(int subitem);
+  
+  int vlist_export();
 #ifdef __cplusplus
 }
 #endif

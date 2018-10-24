@@ -185,4 +185,54 @@ int vlist_getcommport(int subitem) {
   //port = 5566
   //}
   return 5566;
+
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+static void test_year_day_str(char *ydstr, int len) {
+
+  time_t timer;
+  struct tm *tblock;
+  timer = time(NULL);
+  tblock = localtime(&timer);
+
+  char buff[128];
+  memset(ydstr, 0, len);
+  sprintf(buff, "%dÄê%dÔÂ%dºÅ_%d02%02d%02d-By_%s.txt", tblock->tm_year+1900, tblock->tm_mon+1, tblock->tm_mday, tblock->tm_hour, tblock->tm_min, tblock->tm_sec, "Keven");
+  
+  strcpy(ydstr, buff);
+  //MultiByteToWideChar(CP_ACP, 0, buff, strlen(buff), ydstr, len);
+}
+
+int vlist_export() {
+  char filename[256];
+
+  test_year_day_str(filename, sizeof(filename));
+
+  char path[1024];
+  sprintf(path, "./%s", filename);
+  FILE *fp = fopen(path, "w");
+  if (fp == NULL) {
+    cout << "1111111" << "," << path << endl;
+    return -1;
+  }
+
+  
+  int itemcnt = ListView_GetItemCount(hList);
+  int i = 0;
+  for (i = 0; i < itemcnt; i++) {
+    int j = 0;
+    for (j = 0; j < 7; j++) {
+      char buf[128];
+      ListView_GetItemText(vlist_getwindow(), i,j, buf, sizeof(buf));
+      fwrite(buf, strlen(buf), 1, fp);
+      fwrite(" ", 1, 1, fp);
+    }
+    fwrite("\r\n", 2, 1, fp);
+  }
+
+  fclose(fp);
+  return 0;
 }
