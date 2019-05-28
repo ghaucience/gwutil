@@ -11,21 +11,22 @@
 
 using namespace std;
 
-static HWND hList = NULL;
+//static HWND hList = NULL;
 
-static HWND vlist_create_window(HWND hwndParent);
-static int vlist_append_head(char *heads[], int cnt);
+static HWND vlist_create_window(HWND hwndParent, int btnid);
+static int vlist_append_head(HWND hList, char *heads[], int cnt);
 
-int vlist_init(HWND hwnd,  char *heads[], int cnt) {
+HWND vlist_init(HWND hwnd,  char *heads[], int cnt, int btnid) {
 
-  hList = vlist_create_window(hwnd);
+  HWND hList = vlist_create_window(hwnd, btnid);
   
-  vlist_append_head(heads, cnt);
-  return 0;
+  vlist_append_head(hList, heads, cnt);
+
+  return hList;
 }
 
 
-int vlist_append(char *data[], int cnt) {
+int vlist_append(HWND hList, char *data[], int cnt) {
   int itemcnt = TabCtrl_GetRowCount(hList);
   int itemidx = itemcnt;
   
@@ -62,7 +63,7 @@ int vlist_append(char *data[], int cnt) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-static int vlist_append_head(char  *heads[], int cnt) {
+static int vlist_append_head(HWND hList, char  *heads[], int cnt) {
   //SetWindowTheme(listview1, L"Explorer", NULL);  
 
   //创建图片列表 
@@ -104,13 +105,14 @@ static int vlist_append_head(char  *heads[], int cnt) {
   return 0;
 }
 
-static HWND vlist_create_window(HWND hwndParent) {
+static HWND vlist_create_window(HWND hwndParent, int btnid) {
     //创建listview  
   RECT rc;
   GetClientRect(hwndParent, &rc);
 
   RECT rcbtn;
-  GetClientRect(GetDlgItem(hwndParent, BTN_SCAN),&rcbtn);
+  //GetClientRect(GetDlgItem(hwndParent, BTN_SCAN),&rcbtn);
+  GetClientRect(GetDlgItem(hwndParent, btnid),&rcbtn);  
   
   
   int style = WS_CHILD | LVS_REPORT | LVS_SINGLESEL | WS_VISIBLE;
@@ -129,7 +131,7 @@ static HWND vlist_create_window(HWND hwndParent) {
 }
 
 
-void vlist_clear() {
+void vlist_clear(HWND hList) {
   //int nCols;
   //HWND hWndListView, hWndListViewHeader;
   
@@ -150,13 +152,13 @@ void vlist_clear() {
   */
 }
 
-HWND vlist_getwindow() {
+HWND vlist_getwindow(HWND hList) {
   return hList;
 }
 
 
 
-int vlist_hitted_item(int x, int y) {
+int vlist_hitted_item(HWND hList, int x, int y) {
   int itemcnt = ListView_GetItemCount(hList);
   int i = 0;
   for (i = 0; i < itemcnt; i++) {
@@ -174,10 +176,10 @@ int vlist_hitted_item(int x, int y) {
 }
 
 
-void vlist_getcommip(int subitem, char *ip, int len) {
-  ListView_GetItemText(vlist_getwindow(), subitem, 6, ip, len);  
+void vlist_getcommip(HWND hList, int subitem, char *ip, int len) {
+  ListView_GetItemText(vlist_getwindow(hList), subitem, 6, ip, len);  
 }
-int vlist_getcommport(int subitem) {
+int vlist_getcommport(HWND hList, int subitem) {
   // char strport[128];
   //ListView_GetItemText(vlist_getwindow(), subitem, 7, strport, sizeof(strport));
   //int port = 5566
@@ -206,7 +208,7 @@ static void test_year_day_str(char *ydstr, int len) {
   //MultiByteToWideChar(CP_ACP, 0, buff, strlen(buff), ydstr, len);
 }
 
-int vlist_export() {
+int vlist_export(HWND hList) {
   char filename[256];
 
   test_year_day_str(filename, sizeof(filename));
@@ -222,11 +224,12 @@ int vlist_export() {
   
   int itemcnt = ListView_GetItemCount(hList);
   int i = 0;
+  cout << "itemcnt:" << itemcnt <<endl;
   for (i = 0; i < itemcnt; i++) {
     int j = 0;
     for (j = 0; j < 7; j++) {
       char buf[128];
-      ListView_GetItemText(vlist_getwindow(), i,j, buf, sizeof(buf));
+      ListView_GetItemText(vlist_getwindow(hList), i,j, buf, sizeof(buf));
       fwrite(buf, strlen(buf), 1, fp);
       fwrite(" ", 1, 1, fp);
     }

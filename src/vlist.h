@@ -7,15 +7,15 @@
 extern "C" {
 #endif
 
-  int vlist_init(HWND hwnd, char *heads[], int cnt);
-  int vlist_append(char *data[], int cnt);
-  void vlist_clear();
-  HWND vlist_getwindow();
-  int vlist_hitted_item(int x, int y);
-  void vlist_getcommip(int subitem, char *ip, int len);
-  int vlist_getcommport(int subitem);
+  HWND vlist_init(HWND hwnd, char *heads[], int cnt, int btnid);
+  int vlist_append(HWND hList, char *data[], int cnt);
+  void vlist_clear(HWND hList);
+  HWND vlist_getwindow(HWND hList);
+  int vlist_hitted_item(HWND hList, int x, int y);
+  void vlist_getcommip(HWND hList, int subitem, char *ip, int len);
+  int vlist_getcommport(HWND hList, int subitem);
   
-  int vlist_export();
+  int vlist_export(HWND hList);
 #ifdef __cplusplus
 }
 #endif
