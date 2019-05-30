@@ -14,6 +14,7 @@ extern "C" {
   int vlist_hitted_item(HWND hList, int x, int y);
   void vlist_getcommip(HWND hList, int subitem, char *ip, int len);
   int vlist_getcommport(HWND hList, int subitem);
+  void vlist_get_commmac(HWND hList, int subitem, char *mac, int len);  
   
   int vlist_export(HWND hList);
 #ifdef __cplusplus

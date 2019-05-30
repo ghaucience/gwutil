@@ -189,6 +189,9 @@ int vlist_getcommport(HWND hList, int subitem) {
   return 5566;
 
 }
+void vlist_get_commmac(HWND hList, int subitem, char *mac, int len) {
+  ListView_GetItemText(vlist_getwindow(hList), subitem, 1, mac,  len);  
+}
 
 #include <stdio.h>
 #include <stdlib.h>
