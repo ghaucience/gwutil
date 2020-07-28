@@ -17,8 +17,8 @@ PATH			+=$(WindowsSdkDir)\bin;
 PATH			+=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;
 PATH			+=C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;
 PATH			+=C:\Program Files\Microsoft SQL Server\90\Tools\binn\
-PATH			:=PATH=D:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE;D:\Program Files\Microsoft Visual Studio 9.0\VC\BIN;D:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools;C:\WINDOWS\Microsoft.NET\Framework\v3.5;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;D:\Program Files\Microsoft Visual Studio 9.0\VC\VCPackages;C:\Program Files\\Microsoft SDKs\Windows\v6.0A\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;F:\Program Files\emacs\bin
-
+#PATH			:=PATH=D:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE;D:\Program Files\Microsoft Visual Studio 9.0\VC\BIN;D:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools;C:\WINDOWS\Microsoft.NET\Framework\v3.5;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;D:\Program Files\Microsoft Visual Studio 9.0\VC\VCPackages;C:\Program Files\\Microsoft SDKs\Windows\v6.0A\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;F:\Program Files\emacs\bin
+PATH			:=PATH=d:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE;d:\Program Files\Microsoft Visual Studio 9.0\VC\BIN;d:\Program Files\Microsoft Visual Studio 9.0\Common7\Tools;C:\WINDOWS\Microsoft.NET\Framework\v3.5;C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727;d:\Program Files\Microsoft Visual Studio 9.0\VC\VCPackages;C:\Program Files\\Microsoft SDKs\Windows\v6.0A\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\system32\WindowsPowerShell\v1.0;c:\Program Files\Microsoft SQL Server\90\Tools\binn\
 # tools
 # ##############################################################################
 CC			:= cl
